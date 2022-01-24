@@ -4,7 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/ALL_Mony/Android/currency_converter/app/src/main/res/layout/activity_main.xml" value="0.20520833333333333" />
-        <entry key="..\:/ALL_Mony/Android/currency_converter/app/src/main/res/layout/fragment_first.xml" value="0.25" />
+        <entry key="..\:/ALL_Mony/Android/currency_converter/app/src/main/res/layout/content_main.xml" value="0.20520833333333333" />
+        <entry key="..\:/ALL_Mony/Android/currency_converter/app/src/main/res/layout/fragment_first.xml" value="0.20520833333333333" />
+        <entry key="..\:/ALL_Mony/Android/currency_converter/app/src/main/res/layout/fragment_second.xml" value="0.30416666666666664" />
       </map>
     </option>
   </component>

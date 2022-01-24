@@ -10,7 +10,7 @@
         android:id="@+id/przeliczButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/przelicz_button_text"
+        android:text="@string/recalculate_button_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,12 +30,18 @@
 
     <TextView
         android:id="@+id/kwotaPrzeliczona"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="283dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="48dp"
+        android:text="@string/message_text"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/podajKwote"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.398"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/przeliczButton" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.465" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

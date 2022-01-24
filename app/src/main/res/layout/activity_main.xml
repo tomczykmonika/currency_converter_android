@@ -32,6 +32,7 @@
         android:background="?attr/colorPrimary"
         app:layout_anchor="@+id/appBarLayout"
         app:layout_anchorGravity="center"
-        app:popupTheme="@style/Theme.Currency_converter.PopupOverlay" />
+        app:popupTheme="@style/Theme.Currency_converter.PopupOverlay"
+        app:titleTextColor="@android:color/white" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
