@@ -20,6 +20,7 @@ import java.math.RoundingMode
  */
 
 class FirstFragment : Fragment() {
+    var jsonObj : JSONObject = TODO()
     fun createUrl(old_amount: String,old_currency: String,new_currency: String): String {
         return "https://currency-converter-by-api-ninjas.p.rapidapi.com/v1/convertcurrency?have=$old_currency&want=$new_currency&amount=$old_amount"
     }
@@ -42,11 +43,10 @@ class FirstFragment : Fragment() {
             override fun onResponse(call: Call, response: Response ) {
                 val answer = response.body?.string()
                 println(answer)
-                val jsonObj = JSONObject(answer?.substring(answer.indexOf("{"), answer.lastIndexOf("}") + 1))
-                return jsonObj
+                jsonObj = JSONObject(answer?.substring(answer.indexOf("{"), answer.lastIndexOf("}") + 1))
             }
         })
-
+    return jsonObj
     }
 
     fun recalculate(view: View) {
@@ -57,9 +57,9 @@ class FirstFragment : Fragment() {
 
         val jsonObj = connectApi(old_amount, old_currency, new_currency )
         val new_amount = jsonObj.getDouble("new_amount").toString()
-        val new_currency= jsonObj.getString("new_currency")
-        val old_currency= jsonObj.getString("old_currency")
-        val old_amount= jsonObj.getDouble("old_amount").toString()
+        //val new_currency= jsonObj.getString("new_currency")
+        //val old_currency= jsonObj.getString("old_currency")
+        //val old_amount= jsonObj.getDouble("old_amount").toString()
 
         view.findViewById<TextView>(R.id.kwotaPrzeliczona).text = createMsg(old_amount, new_amount, old_currency, new_currency)
 
