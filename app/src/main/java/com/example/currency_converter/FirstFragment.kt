@@ -18,9 +18,8 @@ import java.math.RoundingMode
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
-
 class FirstFragment : Fragment() {
-    var jsonObj : JSONObject = TODO()
+
     fun createUrl(old_amount: String,old_currency: String,new_currency: String): String {
         return "https://currency-converter-by-api-ninjas.p.rapidapi.com/v1/convertcurrency?have=$old_currency&want=$new_currency&amount=$old_amount"
     }
@@ -29,7 +28,8 @@ class FirstFragment : Fragment() {
         return "$old_amount $old_currency to $new_amount $new_currency."
     }
 
-    fun connectApi(old_amount: String, old_currency: String, new_currency: String): JSONObject {
+    fun connectApi(old_amount: String, old_currency: String, new_currency: String) : JSONObject {
+
         val client = OkHttpClient()
         val request = Request.Builder()
             .url(createUrl(old_amount,old_currency,new_currency))
@@ -37,16 +37,20 @@ class FirstFragment : Fragment() {
             .addHeader("x-rapidapi-host", "currency-converter-by-api-ninjas.p.rapidapi.com")
             .addHeader("x-rapidapi-key", "9e7ed72733mshab0cd3c7461f069p17ef3bjsn9c88d40083eb")
             .build()
+        val response = client.newCall(request).execute()
+        val answer = response.body?.string()
+        println(answer)
+        return JSONObject(answer?.substring(answer.indexOf("{"), answer.lastIndexOf("}") + 1))
 
-        client.newCall(request).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {println("chujnia")}
-            override fun onResponse(call: Call, response: Response ) {
-                val answer = response.body?.string()
-                println(answer)
-                jsonObj = JSONObject(answer?.substring(answer.indexOf("{"), answer.lastIndexOf("}") + 1))
-            }
-        })
-    return jsonObj
+        //client.newCall(request).enqueue(responseCallback = object : Callback {
+        //    override fun onFailure(call: Call, e: IOException) {}
+        //    override fun onResponse(call: Call, response: Response ): JSONObject {
+        //        val answer = response.body?.string()
+        //        println(answer)
+        //        return JSONObject(answer?.substring(answer.indexOf("{"), answer.lastIndexOf("}") + 1))
+        //        //val new_amount = jsonObj.getDouble("new_amount").toString()
+        //    }
+        //})
     }
 
     fun recalculate(view: View) {
