@@ -46,8 +46,6 @@ class connectApi(old_amount: String, old_currency: String, new_currency: String,
 
 class FirstFragment : Fragment() {
 
-
-
     fun createMsg(old_amount: String,new_amount: String, old_currency: String, new_currency: String ): String {
         return "$old_amount $old_currency to $new_amount $new_currency."
     }
@@ -58,26 +56,24 @@ class FirstFragment : Fragment() {
         val new_currency = "USD"
 
 
-        val new_amount =
+        val json =
             connectApi(old_amount, old_currency, new_currency,
-                { logMyString(it)
-                }
+                { logMyString(it)}
             ).toString()
 
-        println(new_amount.replace("\\t+", ""))
+        println(json)
 
         //val jsonObj = JSONObject(json.substring(json.indexOf("{"), json.lastIndexOf("}") + 1))
         //val myString = jsonObj.getDouble("new_amount").toString()
-
         //view.findViewById<TextView>(R.id.kwotaPrzeliczona).text = createMsg(old_amount, new_amount, old_currency, new_currency)
-        // 30 sekund to trochę długi czas oczekiwania, ale gdyby miało być 30 to tutaj dalibyśmy wartość 30000 zamiast 5000
+        ////30 sekund to trochę długi czas oczekiwania, ale gdyby miało być 30 to tutaj dalibyśmy wartość 30000 zamiast 5000
         //Thread.sleep(5000);
-        view.findViewById<TextView>(R.id.kwotaPrzeliczona).isVisible = true
+        //view.findViewById<TextView>(R.id.kwotaPrzeliczona).isVisible = true
 
     }
 
     private fun logMyString(myBackValue: String) {
-        myBackValue
+        Log.d("",myBackValue)
     }
 
     private var _binding: FragmentFirstBinding? = null
